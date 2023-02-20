@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, Switch } from 'react-native';
+import { ScrollView, View, Text, Switch } from 'react-native';
 import Calculator from "./components/Calculator.js";
 import Styles from "./styles/Styles.js";
 

@@ -1,17 +1,15 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Styles from "../styles/Styles.js";
+import NumericInput from 'react-native-numeric-input'
+
 
 export default function Calculator({ isDarkMode , textStyle , innerContainerStyle}) {
 
-    const [bottle, onChangeBottle] = React.useState(0);
-
-    const [weight, onChangeWeight] = React.useState(0);
-
-    const [hour, onChangeHours] = React.useState(0);
-
+    const [bottle, setBottle] = React.useState(0);
+    const [weight, setWeight] = React.useState(69);
+    const [hour, setHour] = React.useState(0);
     const [gender, setGender] = React.useState("male");
-
     const [finalResult, setFinalResult] = React.useState(0);
 
 
@@ -40,43 +38,60 @@ export default function Calculator({ isDarkMode , textStyle , innerContainerStyl
 
     return (
         <View>
-            <View style={[Styles.innerContainer, isDarkMode && Styles.darkModeInnerContainer]}>
-                <Text style={textStyle}>Bottles: </Text>
-                <TextInput
-                    onChangeText={onChangeBottle}
-                    value={bottle}
-                    keyboardType="numeric"
-                    style={textStyle}
+            <View>
+                <Text style={textStyle}>Weight: </Text>
+                <NumericInput
+                    value={weight}
+                    onChange={setWeight}
+                    minValue={0}
+                    maxValue={200}
+                    step={1}
+                    textColor='green'
                 />
             </View>
-            <TextInput
-                onChangeText={onChangeWeight}
-                value={weight}
-                keyboardType="numeric"
-                style={textStyle}
-            />
 
-            <TextInput
-                onChangeText={onChangeHours}
-                value={hour}
-                keyboardType="numeric"
-                style={textStyle}
-            />
+            <View>
+                <Text style={textStyle}>Bottles: </Text>
+                <NumericInput
+                    value={bottle}
+                    onChange={setBottle}
+                    minValue={0}
+                    maxValue={100}
+                    step={1}
+                    textColor='green'
+                />
+            </View>
+
+            <View>
+                <Text style={textStyle}>Hours: </Text>
+                <NumericInput
+                    value={hour}
+                    onChange={setHour}
+                    minValue={0}
+                    maxValue={100}
+                    step={1}
+                    textColor='green'
+                />
+            </View>
+
             <View>
                 <Text style={textStyle}>Gender Selection</Text>
                 <View style={innerContainerStyle}>
-                    <TouchableOpacity onPress={() => setGender("male")}>
+                    <TouchableOpacity style={[Styles.text, gender == "male" && Styles.selection]} onPress={() => setGender("male")}>
                     <Text style={textStyle}>Male</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setGender("female")}>
+                    <TouchableOpacity style={[Styles.text, gender == "female" && Styles.selection]} onPress={() => setGender("female")}>
                         <Text style={textStyle}>Female</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={textStyle}>{finalResult}</Text>
-            <TouchableOpacity onPress={handle}>
-                <Text style={textStyle}>Calculate</Text>
-            </TouchableOpacity>
+
+            <View>
+                <Text style={textStyle}>{finalResult}</Text>
+                <TouchableOpacity style={Styles.button} onPress={handle}>
+                    <Text style={textStyle}>Calculate</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }

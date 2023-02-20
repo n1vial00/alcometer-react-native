@@ -11,17 +11,26 @@ export default StyleSheet.create({
   innerContainer: {
     flexDirection: "row",
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    
   },
   darkModeContainer: {
     backgroundColor: '#000',
   },
   darkModeInnerContainer: {
-    backgroundColor: '#000',
+    backgroundColor: '#0D1116',
   },
   darkModeText: {
-    color: '#fff',
+    color: 'green',
   },
+  button: {
+    backgroundColor: 'brown',
+  },
+  text: {
+    color: 'black',
+  },
+  selection: {
+    backgroundColor: 'brown',
+  },
+  
 });
 
