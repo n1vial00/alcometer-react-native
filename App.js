@@ -17,7 +17,10 @@ export default function App() {
   return (
 
     <View style={containerStyle}>
-      <Switch value={isDarkMode} onValueChange={toggleSwitch} />
+      <View style={innerContainerStyle}>
+        <Switch value={isDarkMode} onValueChange={toggleSwitch} />
+        <Text style={textStyle}> Dark mode toggle</Text>
+      </View>
       <Text style={textStyle}>Alcometer</Text>
       <StatusBar style="auto" />
       <Calculator isDarkMode={isDarkMode} innerContainerStyle={innerContainerStyle} textStyle={textStyle}/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import Styles from "../styles/Styles.js";
 import NumericInput from 'react-native-numeric-input'
 
@@ -38,12 +38,13 @@ export default function Calculator({ isDarkMode , textStyle , innerContainerStyl
 
     return (
         <View>
+            <ScrollView>
             <View>
                 <Text style={textStyle}>Weight: </Text>
                 <NumericInput
                     value={weight}
                     onChange={setWeight}
-                    minValue={0}
+                    minValue={1}
                     maxValue={200}
                     step={1}
                     textColor='green'
@@ -55,7 +56,7 @@ export default function Calculator({ isDarkMode , textStyle , innerContainerStyl
                 <NumericInput
                     value={bottle}
                     onChange={setBottle}
-                    minValue={0}
+                    minValue={1}
                     maxValue={100}
                     step={1}
                     textColor='green'
@@ -67,7 +68,7 @@ export default function Calculator({ isDarkMode , textStyle , innerContainerStyl
                 <NumericInput
                     value={hour}
                     onChange={setHour}
-                    minValue={0}
+                    minValue={1}
                     maxValue={100}
                     step={1}
                     textColor='green'
@@ -87,11 +88,12 @@ export default function Calculator({ isDarkMode , textStyle , innerContainerStyl
             </View>
 
             <View>
-                <Text style={textStyle}>{finalResult}</Text>
+                <Text style={textStyle}>Alcohol level: {finalResult}</Text>
                 <TouchableOpacity style={Styles.button} onPress={handle}>
                     <Text style={textStyle}>Calculate</Text>
                 </TouchableOpacity>
             </View>
+            </ScrollView>
         </View>
     );
 }
